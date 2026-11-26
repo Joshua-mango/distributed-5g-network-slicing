@@ -941,6 +941,22 @@ python rpc_experiments.py --ping-requests 100 --concurrency 10 --state-writes 30
 ```
 
 The benchmark measures concurrent RPC ping latency and throughput, synchronous state-write latency, replica visibility after each write, a competing compare-and-set race, read and tombstone consistency, synchronization overhead relative to a single-replica read, and gateway-reported message count/bytes. It saves `rpc_measurements.csv`, `consistency_trials.csv`, and `summary.json` under `results/milestone11/`. The measured run and consistency interpretation are in [`results/milestone11/RESULTS.md`](results/milestone11/RESULTS.md). Results are host-specific and do not estimate production capacity.
+Key measured results
+
+Metric | Result |
+Successful RPC requests | 100/100 |
+RPC throughput | 239.85 calls/s |
+Mean RPC latency | 40.14 ms |
+P95 RPC latency | 53.03 ms |
+Successful replicated writes | 30 |
+Replica consistency checks | 30/30 |
+Mean write latency | 62.68 ms |
+Write throughput | 10.88 writes/s |
+CAS race | 1 success, 1 conflict |
+Tombstone consistency | Passed |
+
+Detailed measurements, methodology and limitations are documented in
+[`results/milestone11/RESULTS.md`](results/milestone11/RESULTS.md).
 
 ## Milestone 12 – Distributed File System and Telecom Capstone
 
